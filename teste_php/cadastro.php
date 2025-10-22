@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $pdo->prepare($sql);
 
     try {
-        $stmt->execute([':nome' => $nome, ':email' => $idade, ':cpf' => $cpf, ':senha' => $senha]);
+        $stmt->execute([':nome' => $nome, ':idade' => $idade, ':cpf' => $cpf, ':senha' => $senha]);
         echo "Usuário cadastrado com sucesso!";
     } catch (PDOException $e) {
         echo "Erro: " . $e->getMessage();
@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <form method="POST">
     Nome: <input type="text" name="nome"><br>
-    Idade: <input type="email" name="idade"><br>
-    CPF: <input type="cpf" name="cpf"><br>
+    Idade: <input type="number" name="idade"><br>
+    CPF: <input type="number" name="cpf"><br>
     Senha: <input type="password" name="senha"><br>
     <button type="submit">Cadastrar</button>
 </form>
